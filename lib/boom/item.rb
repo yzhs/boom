@@ -1,5 +1,7 @@
 # coding: utf-8
 
+$max_length = 64
+
 # The representation of the base unit in boom. An Item contains just a name and
 # a value. It doesn't know its parent relationship explicitly; the parent List
 # object instead knows which Items it contains.
@@ -42,14 +44,14 @@ module Boom
     #
     # Returns the shortened name.
     def short_name
-      name.length > 15 ? "#{name[0..14]}…" : name[0..14]
+      name.length > $max_length ? "#{name[0..$max_length-1]}…" : name[0..$max_length-1]
     end
 
     # Public: the amount of consistent spaces to pad based on Item#short_name.
     #
     # Returns a String of spaces.
     def spacer
-      name.length > 15 ? '' : ' '*(15-name.length+1)
+      name.length > $max_length ? '' : ' '*($max_length-name.length+1)
     end
 
     # Public: only return url part of value - if no url has been
