@@ -20,7 +20,7 @@ require 'boom/storage'
 require 'boom/core_ext/symbol'
 
 module Boom
-  VERSION = '0.5.0'
+  VERSION = '0.5.1'
 
   def self.storage
     @storage ||= Storage.new
